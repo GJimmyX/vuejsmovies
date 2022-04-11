@@ -1,17 +1,27 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HeaderNav />
+      <div v-if="$route.path == '/'">
+        <LastMovies />
+      </div>
+      <div v-else>
+        <router-view :key="$route.fullPath"></router-view>
+      </div>
+    <FooterApp />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import HeaderNav from './components/template/HeaderNav.vue';
+import LastMovies from './components/LastMovies.vue';
+import FooterApp from './components/template/FooterApp.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    HeaderNav,
+    LastMovies,
+    FooterApp
   }
 }
 </script>
@@ -23,6 +33,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
