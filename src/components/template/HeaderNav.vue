@@ -2,16 +2,18 @@
     <header>
         <img src="../.././assets/logo.png" alt="Image pour le header">
         <h1>VUE JS MOVIES</h1>
-        <nav>
-            <ul>
-                <li><router-link to="/LastMovies">VueJSMovies</router-link></li>
-                <li><router-link to="/FrenchMovies">Films Français</router-link></li>
-                <li><router-link to="/AmericanMovies">Films Américains</router-link></li>
-                <li><router-link to="/TopRatedMovies">Top 50: les mieux notés</router-link></li>
-                <li><router-link to="/LastMovies">Films de 2021</router-link></li>
-                <li><router-link to="/SearchMovies">rechercher un film</router-link></li>
-            </ul>
-        </nav>
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><router-link to="/LastMovies">VueJSMovies</router-link></li>
+                    <li><router-link to="/FrenchMovies">Films Français</router-link></li>
+                    <li><router-link to="/AmericanMovies">Films Américains</router-link></li>
+                    <li><router-link to="/TopRatedMovies">Top 50: les mieux notés</router-link></li>
+                    <li><router-link to="/LastMovies">Films de 2021</router-link></li>
+                    <li><router-link to="/SearchMovies">rechercher un film</router-link></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 </template>
 
@@ -33,15 +35,21 @@
         margin: 0;
         padding: 5% 0;
     }
-    header nav{
+    header .nav-container{
+        background-color: #343A41;
         width: 100%;
+        padding: 2% 0;
     }
-    header nav ul{
+    header .nav-container nav ul{
         display: flex;
         justify-content: space-around;
         padding: 0;
+        margin: 0;
     }
-    header nav ul li{
+    header .nav-container nav ul li{
         list-style: none;
+    }
+    header .nav-container nav ul li a{
+        color: #ABB1B8;
     }
 </style>
