@@ -2,7 +2,7 @@
     <div>
         <h2>Rechercher un Film</h2>
         <div class="col-3 align-middle">
-            <input v-model="query" placeholder="Recherche ..." @keypress="recherche">
+            <input v-model="query" placeholder="Recherche ..." @keyup="recherche">
         </div>
         <div class="row col-12">
             <div class="card col-2" v-for="movie in movies" :key="movie.id">
