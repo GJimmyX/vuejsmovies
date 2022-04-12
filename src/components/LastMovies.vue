@@ -4,7 +4,9 @@
         <div class="row col-12">
             <div class="card col-2" v-for="movie in movies" v-bind:key="movie.id"> 
                 <router-link :to="'/MovieDetails/' + movie.id"><h3 scope="row">{{movie.title}}</h3></router-link>
-                <img :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" alt="Image du Film">
+                <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" alt="Image du Film">
+                <h5 class="text-center">Date de sortie: {{movie.release_date}}</h5>
+                <h5 class="text-center">Note moyenne: {{movie.vote_average}}</h5>
                 <p class="text-justify">{{movie.overview}}</p>
             </div>
         </div>
@@ -23,10 +25,9 @@
         },
         created: function() {
             axios
-            .get('https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=en_US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&year=2022&with_watch_monetization_types=flatrate')
+            .get('https://api.themoviedb.org/3/discover/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&vote_count.gte=1000&with_watch_monetization_types=flatrate')
             .then(res => {
                 this.movies = res.data.results;
-                console.log(this.movies);
             })
         }
     }
@@ -56,8 +57,11 @@
         color: black;
     }
     div .row .card img{
-        width: 50%;
+        width: 60%;
         margin-bottom: 5%;
+    }
+    div .row .card h5{
+        margin: 0;
     }
     div .row .card p{
         width: 75%;
