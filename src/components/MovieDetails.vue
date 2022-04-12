@@ -1,17 +1,17 @@
 <template>
-    <div class="row col-12" v-if="movies">
+    <div class="row col-12" v-if="movie">
         <div class="col-4">
-            <img v-if="movies.poster_path" :src="'https://image.tmdb.org/t/p/original' + movies.poster_path" alt="Image du Film">
+            <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" alt="Image du Film">
         </div>
         <div class="col-4">
             <div class="video">
                 <iframe width="560" height="315" :src="'https://www.youtube.com/embed/' + movie_key" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div class="text m-auto">
-                <h2>{{movies.title}}</h2>
-                <p class="text-justify">{{movies.overview}}</p>
-                <h5 class="text-center">Date de sortie: {{movies.release_date}}</h5>
-                <h5 class="text-center">Note moyenne: {{movies.vote_average}}</h5>
+                <h2>{{movie.title}}</h2>
+                <p class="text-justify">{{movie.overview}}</p>
+                <h5 class="text-center">Date de sortie: {{movie.release_date}}</h5>
+                <h5 class="text-center">Note moyenne: {{movie.vote_average}}</h5>
             </div>
         </div>
     </div>
@@ -24,7 +24,7 @@
         name: 'MovieDetails',
         data() {
             return{
-                movies: null,
+                movie: null,
                 movie_key: null,
             };
         },
@@ -32,7 +32,7 @@
             axios
             .get('https://api.themoviedb.org/3/movie/'+this.$route.params.id+'?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr')
             .then(res => {
-                this.movies = res.data;
+                this.movie = res.data;
             })
             axios
             .get('https://api.themoviedb.org/3/movie/'+this.$route.params.id+'/videos?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr')
@@ -46,6 +46,7 @@
 <style scoped>
     .row{
         margin: 2% 0;
+        align-items: center;
     }
     .row .col-4 img{
         width: 50%;
