@@ -1,22 +1,31 @@
 <template>
     <div>
         <h2>Vos films préférés sont sur VueJS Movies !</h2>
+        <sort-buttons :movies="movies" @sort-movies="sortMovies">
+        </sort-buttons>
         <movie-list :movies="movies">
         </movie-list>
     </div> 
 </template>
 
 <script>
+    import SortButtons from './utils/SortButtons.vue';
     import MovieList from './utils/MovieList.vue';
     import axios from 'axios';
 
     export default {
-        components: { MovieList },
+        components: { SortButtons, MovieList },
         name: 'LastMovies',
         data() {
             return{
                 movies: null,
             };
+        },
+        methods: {
+            sortMovies(sortedMovies){
+                this.movies = sortedMovies;
+                console.log('sort-movies');
+            }
         },
         created: function() {
             axios
