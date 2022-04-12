@@ -1,5 +1,7 @@
 <template>
     <div class="row col-12">
+        <sort-buttons>
+        </sort-buttons>
         <div class="card col-2" v-for="movie in movies" v-bind:key="movie.id"> 
             <router-link :to="'/MovieDetails/' + movie.id"><h3 scope="row">{{movie.title}}</h3></router-link>
             <img v-if="movie.poster_path" :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" alt="Image du Film">
@@ -11,7 +13,10 @@
 </template>
 
 <script>
+    import SortButtons from './SortButtons.vue'
+
     export default {
+        components: { SortButtons },
         name: 'MovieList',
         props: ['movies'],
     }

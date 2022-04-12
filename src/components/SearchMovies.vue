@@ -26,12 +26,10 @@
         },
         methods: {
             recherche() {
-                console.log('https://api.themoviedb.org/3/search/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&query='+this.query+'&page=1&include_adult=false')
                 axios
                 .get('https://api.themoviedb.org/3/search/movie?api_key=3ea8988340d4ed715d28b9978346c29e&language=fr&query='+this.query+'&page=1&include_adult=false')
                 .then(res => {
                     this.movies = res.data.results;
-                    console.log(res);
                 })
             }
         }
